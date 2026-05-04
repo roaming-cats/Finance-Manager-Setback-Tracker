@@ -1,1 +1,2 @@
-export * from './transactions/indexTransaction'
+export * from './transactions/indexTransactions'
+export * from './users/users'
