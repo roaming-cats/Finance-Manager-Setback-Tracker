@@ -1,6 +1,4 @@
 import { Request, Response, NextFunction } from 'express'
-import { ParamsDictionary } from 'express-serve-static-core'
-import { ParsedQs } from 'qs'
 import { ZodType } from 'zod'
 
 export const validateBody = (schema: ZodType) => {
@@ -16,7 +14,7 @@ export const validateBody = (schema: ZodType) => {
       })
       return
     }
-    req.body = result.data
+    req.validatedBody = result.data
     next()
   }
 }
@@ -34,7 +32,7 @@ export const validateQuery = (schema: ZodType) => {
       })
       return
     }
-    req.query = result.data as ParsedQs
+    req.validatedQuery = result.data
     next()
   }
 }
@@ -52,7 +50,7 @@ export const validateParams = (schema: ZodType) => {
       })
       return
     }
-    req.params = result.data as ParamsDictionary
+    req.validatedParams = result.data  
     next()
   }
 }
